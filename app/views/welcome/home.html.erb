@@ -47,4 +47,9 @@
       </div>
     </div>
   </div>
+  <div class="container-fluid">
+    <% @quotes.each do |author, quote|%>
+      <p><%= "#{quote} - #{author}" %></p>
+    <% end %>
+  </div>
 </div>
