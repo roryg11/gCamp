@@ -22,7 +22,9 @@
   </div>
 </nav>
 
-<%= yield %>
-
+  <%= yield %>
+  <div id=footer>
+    <p class= navbar-text navbar-left navbar-fixed-bottom text-muted><%= link_to "About", about_path %> | <%= link_to "Terms", terms_path %></p>
+  </div>
 </body>
 </html>
