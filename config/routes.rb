@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get "about" => "about#us", as: :about
   get "terms" => "terms#use", as: :terms
+  get "faq" => "faq#questions", as: :faq
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
