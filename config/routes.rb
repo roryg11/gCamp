@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :tasks
+
   root "welcome#home"
 
   get "about" => "about#us", as: :about
