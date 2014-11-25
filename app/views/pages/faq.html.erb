@@ -1,9 +1,9 @@
 <div class="container container-fluid">
   <div class="col-md-8">
     <h1>Frequently Asked Questions</h1>
-    <% @faq_answer.each do |question, answer| %>
-      <p><b><%= question %></b></p>
-      <p><%= answer %></p>
+    <% @faq_answer.each do |faq_object| %>
+      <p><b><%= faq_object.question %></b></p>
+      <p><%= faq_object.answer %></p>
     <% end %>
   </div>
 </div>
