@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   root "welcome#home"
 
-  get "about" => "about#us", as: :about
-  get "terms" => "terms#use", as: :terms
-  get "faq" => "faq#questions", as: :faq
+  get "about" => "pages#about", as: :about
+  get "terms" => "pages#terms", as: :terms
+  get "faq" => "pages#faq", as: :faq
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
