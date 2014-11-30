@@ -9,6 +9,8 @@ class TasksController < ApplicationController
     else
       @tasks = Task.all
     end
+
+    @today = Date.today
   end
 
   # GET /tasks/1
