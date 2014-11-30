@@ -1,6 +1,7 @@
 <div class="container container-fluid">
   <div class="page-header">
     <div class="pull-right">
+      <%= link_to 'All', tasks_path %> | <%= link_to 'Incomplete', tasks_path(:complete => false) %>
       <%= link_to 'New Task', new_task_path, class:"btn btn-info" %>
     </div>
     <h1>Tasks</h1>
@@ -11,6 +12,8 @@
     <thead>
       <tr>
         <th>Description</th>
+        <th>Completed?</th>
+        <th>Due Date</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -19,6 +22,8 @@
       <% @tasks.each do |task| %>
         <tr>
           <td class="table-spacing"><%= task.description %></td>
+          <td class="table-spacing"><%= task.complete %></td>
+          <td class="table-spacing"><%= task.due_date %></td>
           <td class="table-spacing"><%= link_to 'Show', task, class: "btn btn-success" %></td>
           <td class="table-spacing"><%= link_to 'Edit', edit_task_path(task), class: "btn btn-primary" %></td>
           <td class="table-spacing"><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>

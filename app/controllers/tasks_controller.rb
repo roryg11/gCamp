@@ -4,7 +4,11 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    if params[:complete]
+      @tasks = Task.where(:complete => params[:complete])
+    else
+      @tasks = Task.all
+    end
   end
 
   # GET /tasks/1
@@ -69,6 +73,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:description)
+      params.require(:task).permit(:description, :due_date, :complete)
     end
 end
