@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user = User.create(event_params)
     if @user.save
       redirect_to users_path
+      flash[:notice]="User successfully created."
     else
       render :new
     end
