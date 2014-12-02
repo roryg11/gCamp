@@ -1,7 +1,11 @@
 <div class="container container-fluid">
   <div class="page-header">
     <div class="pull-right">
-      <%= link_to 'All', tasks_path %> | <%= link_to 'Incomplete', tasks_path(:complete => false) %>
+      <% if params[:complete] %>
+        <%= link_to 'All', tasks_path, style: "color: #3399ff" %> | <%= 'Incomplete' %>
+      <% else %>
+        <%= 'All'%> | <%= link_to 'Incomplete', tasks_path(:complete => false), style: "color: #3399ff" %>
+      <% end %>
       <%= link_to 'New Task', new_task_path, class:"btn btn-info" %>
     </div>
     <h1>Tasks</h1>

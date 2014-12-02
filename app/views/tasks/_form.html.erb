@@ -11,30 +11,32 @@
     </div>
   <% end %>
 
-  <form class="form-horizontal">
-    <div class="form-group">
-      <%= f.label :description, class: "col-md-2 control-label" %>
-      <div class="col-md-4">
-        <%= f.text_field :description, class: "form-control" %>
-      </div>
+  <div class="form-group">
+    <%= f.label :description, class: "col-md-2 control-label" %>
+    <div class="col-md-4">
+      <%= f.text_field :description, class: "form-control" %>
     </div>
-    <div class="form-group">
-      <%= f.label :due_date, class: "col-md-2 control-label" %>
-      <div class="col-md-3">
-        <%= f.date_field :due_date, class: "form-control" %>
-      </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :due_date, class: "col-md-2 control-label" %>
+    <div class="col-md-3">
+      <%= f.date_field :due_date, class: "form-control" %>
     </div>
+  </div>
+
+  <% if Task.exists?(@task) %> <!-- checking to see if @task exists in Task data -->
     <div class="form-group">
       <div class="col-md-offset-2 col-md-6">
         <%= f.check_box :complete %> Complete
       </div>
     </div>
-    <div class="form-group">
-      <div class="col-md-offset-2 col-md-6">
-        <%= f.submit class: "btn btn-info"%>
-        <%= link_to "Cancel", :back, class: "btn btn-default" %>
-      </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-6">
+      <%= f.submit class: "btn btn-info"%>
+      <%= link_to "Cancel", :back, class: "btn btn-default" %>
     </div>
-  </form>
+  </div>
 
 <% end %>
