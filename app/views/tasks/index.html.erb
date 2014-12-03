@@ -2,9 +2,9 @@
   <div class="page-header">
     <div class="pull-right">
       <% if params[:complete] %>
-        <%= link_to 'All', tasks_path, style: "color: #3399ff" %> | <%= 'Incomplete' %>
+        <%= link_to 'All', tasks_path %> | <%= 'Incomplete' %>
       <% else %>
-        <%= 'All'%> | <%= link_to 'Incomplete', tasks_path(:complete => false), style: "color: #3399ff" %>
+        <%= 'All'%> | <%= link_to 'Incomplete', tasks_path(:complete => false) %>
       <% end %>
       <%= link_to 'New Task', new_task_path, class:"btn btn-info" %>
     </div>
