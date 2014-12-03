@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(event_params)
+    @user = User.create(user_params)
     if @user.save
       redirect_to users_path
       flash[:notice]="User successfully created."
@@ -17,8 +17,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user= User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to users_path
+    else
+      render :edit
+    end
+  end
+
   private
-  def event_params
+  def user_params
     params.require(:user).permit(
     :first_name,
     :last_name,
