@@ -5,3 +5,11 @@
 .link-color {
   color: red;
 }
+
+tr {
+  border-top : 1px solid #dddddd;
+}
+
+tr:first-child {
+  border-top:none;
+}
