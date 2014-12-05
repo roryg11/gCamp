@@ -4,10 +4,17 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    if params[:complete] #need to do something else for sorting
-      @tasks = Task.where(:complete => params[:complete])
-    else
-      @tasks = Task.all
+    @tasks = Task.all
+    if params[:complete] == "false"
+      @tasks = @tasks.where(:complete => false)
+    end
+
+    if params[:order_by_desc] == "true"
+      @tasks = @tasks.order(:description)
+    end
+
+    if params[:order_by_due_date] == "true"
+      @tasks = @tasks.order(:due_date)
     end
 
     @today = Date.today

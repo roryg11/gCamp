@@ -3,29 +3,28 @@
 </div>
 
 <%= form_for @project, html: {class: "form-horizontal"} do |f| %>
-<% if @project.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@project.errors.count, "error") %> prohibited this user from being saved: </h2>
-  <ul>
-    <% @project.errors.full_messages.each do |message| %>
-    <li><%= message %> </li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
-
-<div class="form-group">
-  <%= f.label :name, class: "col-md-2 control-label" %>
-  <div class="col-md-3">
-    <%= f.text_field :name, class: "form-control" %>
+  <% if @project.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@project.errors.count, "error") %> prohibited this user from being saved: </h2>
+    <ul>
+      <% @project.errors.full_messages.each do |message| %>
+      <li><%= message %> </li>
+      <% end %>
+    </ul>
   </div>
-</div>
+  <% end %>
 
-<div class= "form-group">
-  <div class="col-md-3 col-md-offset-2">
-    <%= f.submit class: "btn btn-primary" %>
-    <%= link_to "Cancel", :back, class: "btn btn-default" %>
+  <div class="form-group">
+    <%= f.label :name, class: "col-md-2 control-label" %>
+    <div class="col-md-3">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
   </div>
-</div>
 
+  <div class= "form-group">
+    <div class="col-md-3 col-md-offset-2">
+      <%= f.submit class: "btn btn-primary" %>
+      <%= link_to "Cancel", :back, class: "btn btn-default" %>
+    </div>
+  </div>
 <% end %>
