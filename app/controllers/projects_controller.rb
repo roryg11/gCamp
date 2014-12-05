@@ -29,6 +29,21 @@ class ProjectsController < ApplicationController
     flash[:notice] = "Project successfully deleted"
   end
 
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    @project.update(project_params)
+    if @project.save
+      redirect_to project_path(@project)
+      flash[:notice] = "Project successfully updated"
+    else
+      render :edit
+    end
+  end
+
   private
   def project_params
     params.require(:project).permit(
