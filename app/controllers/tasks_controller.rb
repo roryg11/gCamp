@@ -5,7 +5,9 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
-    if params[:complete] == "false"
+    if params[:complete] == "true"
+      @tasks = @tasks.order(:complete)
+    elsif params[:complete] == "false"
       @tasks = @tasks.where(:complete => false)
     end
 
