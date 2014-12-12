@@ -1,24 +1,79 @@
 require 'rails_helper'
 
 feature 'CRUDing tasks' do
-  scenario 'user creates a task' do
-
-    visit tasks_path
-    click_on 'New Task'
-    fill_in "Description", with:"take out trash"
-    click_on 'Create Task'
-
-    expect(page).to have_content("take out trash")
-    expect(page).to have_content("Task was successfully created.")
-  end
-
-  scenario 'user sees a task show page on the browser' do
+  scenario 'user can see a listing of tasks on index page' do
     Task.create!(
-    description: "take out trash"
+      description: "take out trash",
+      due_date: "2014-12-17"
+    )
+    Task.create!(
+      description: "fold laundry",
+      due_date: "2014-12-20"
     )
 
     visit tasks_path
-    click_on 'Show'
+
+    expect(page).to have_content("take out trash")
+    expect(page).to have_content("2014-12-17")
+    expect(page).to have_content("fold laundry")
+    expect(page).to have_content("2014-12-17")
+  end
+
+
+  scenario 'user creates a task' do
+
+    visit tasks_path
+    click_on "new-task-action"
+    fill_in "Description", with:"take out trash"
+    fill_in "Due date", with: "2014-12-17"
+    click_on 'Create Task'
+
+    expect(page).to have_content("take out trash")
+    expect(page).to have_content("2014-12-17")
+    expect(page).to have_content("Task was successfully created.")
+  end
+
+  scenario 'user creates a task with a blank description' do
+
+    visit tasks_path
+    click_on "new-task-action"
+    fill_in "Due date", with: "2014-12-17"
+    click_on 'Create Task'
+
+    expect(page).to have_content("Description can't be blank")
+
+  end
+
+  scenario 'user creates a task with a blank date and blank description' do
+
+    visit tasks_path
+    click_on "new-task-action"
+    click_on "Create Task"
+
+    expect(page).to have_content("Description can't be blank")
+  end
+
+  scenario 'user creates a task with only description' do
+
+    visit tasks_path
+    click_on "new-task-action"
+    fill_in "Description", with:"iron shirt"
+    click_on "Create Task"
+
+    expect(page).to have_content("iron shirt")
+  end
+
+
+  scenario 'user sees a task page when they click on \'show\'' do
+    task = Task.create!(
+    description: "take out trash"
+    )
+    Task.create!(
+    description: "fold laundry"
+    )
+
+    visit tasks_path
+    click_on "show-task-#{task.id}-action"
 
     expect(page).to have_content("take out trash")
   end
