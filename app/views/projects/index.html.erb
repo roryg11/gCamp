@@ -1,5 +1,5 @@
 <div class="page-header">
-  <%= link_to "New Project", new_project_path, class:"btn btn-info pull-right" %>
+  <%= link_to "New Project", new_project_path, class:"btn btn-info pull-right", id:"new-project-action" %>
   <h1>Projects</h1>
 </div>
 
@@ -12,7 +12,7 @@
   <tbody>
     <% @projects.each do |project| %>
     <tr>
-      <td><%= link_to "#{project.name}", project_path(project) %></td>
+      <td><%= link_to "#{project.name}", project_path(project), id: "show-project-#{project.id}-action" %></td>
     </tr>
     <% end %>
   </tbody>
