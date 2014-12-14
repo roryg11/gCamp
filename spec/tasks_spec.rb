@@ -104,5 +104,61 @@ feature 'CRUDing tasks' do
     expect(page).to have_content("Task was successfully destroyed.")
     expect(page.current_path).to eq(tasks_path)
   end
+end
 
+feature 'sorting buttons on the index page' do
+  before do
+    Task.create!(
+      description: "clean bathroom",
+      due_date: "#{Date.friday}",
+      completed: false
+    )
+
+    Task.create!(
+      description: "arrange flowers",
+      due_date: "#{Date.monday}",
+      completed: true
+    )
+
+    Task.create!(
+    description: "record album",
+    due_date: "#{Date.wednesday}",
+    completed: false
+    )
+    visit tasks_path
+
+    scenario 'clicking on description to sort alphabetically' do
+       click_on 'sort-by-description-action'
+
+       expect(page.current_path).to eq(tasks_path[order_by_desc: [params[order_by_desc]]])
+       expect(page).to have_content(@tasks.order(:description))
+    end
+
+    scenario 'clicking on Due Date sorts by date' do
+      click_on 'sort-by-due-date-action'
+
+      expect(page.current_path).to eq(tasks_path[order_by_due_date: [params[order_by_due_date]]])
+      expect(page).to have_content(@tasks.order(:due_date))
+    end
+
+    scenario 'clicking on completed sorts by completion' do
+      click_on 'sort-by-completion-action'
+
+      expect(page.current_path).to eq(tasks_path[order_by_due_date: [params[order_by_due_date]]])
+      expect(page).to have_content(@tasks.order(:complete))
+    end
+
+    scenario 'clicking on All shows all tasks' do
+      click_on 'show-incomplete-tasks-action'
+      click_on 'show-all-tasks-path'
+
+      expect(page).to have_content(Task.all)
+    end
+
+    scenario 'clicking on All shows all tasks' do
+      click_on 'show-incomplete-tasks-action'
+
+      expect(page).to have_content(Task.where(complete: false))
+    end
+  end
 end

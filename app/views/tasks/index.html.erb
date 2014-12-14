@@ -2,9 +2,9 @@
   <div class="page-header">
     <div class="pull-right">
       <% if params[:complete] %>
-        <%= link_to 'All', tasks_path %> | <%= 'Incomplete' %>
+        <%= link_to 'All', tasks_path, id: "show-all-tasks-path" %> | <%= 'Incomplete' %>
       <% else %>
-        <%= 'All'%> | <%= link_to 'Incomplete', tasks_path(:complete => false) %>
+        <%= 'All'%> | <%= link_to 'Incomplete', tasks_path(:complete => false), id:"show-incomplete-tasks-action" %>
       <% end %>
       <%= link_to 'New Task', new_task_path, id: "new-task-action", class:"btn btn-info" %>
     </div>
@@ -15,9 +15,9 @@
   <table class="table">
     <thead>
       <tr>
-        <th><%= link_to 'Task Description', tasks_path(filter_params({order_by_desc: true}))%></th>
-        <th><%= link_to 'Completed?', tasks_path(filter_params({complete: true})) %></th>
-        <th><%= link_to 'Due Date', tasks_path(filter_params({order_by_due_date: true})) %></th>
+        <th><%= link_to 'Task Description', tasks_path(filter_params({order_by_desc: true})), id: "sort-by-description-action"%></th>
+        <th><%= link_to 'Completed?', tasks_path(filter_params({complete: true})), id: "sort-by-completion-action" %></th>
+        <th><%= link_to 'Due Date', tasks_path(filter_params({order_by_due_date: true})), id: "sort-by-due-date-action" %></th>
         <th colspan="3"></th>
       </tr>
     </thead>
