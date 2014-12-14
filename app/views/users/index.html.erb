@@ -1,6 +1,6 @@
 <div class="page-header">
   <div class="pull-right">
-    <%= link_to "New User", new_user_path, class: "btn btn-info" %>
+    <%= link_to "New User", new_user_path, class: "btn btn-info", id: "new-user-action" %>
   </div>
   <h1>Users</h1>
 </div>
@@ -16,9 +16,9 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to "#{user.first_name} #{user.last_name}", user %></td>
+        <td><%= link_to "#{user.first_name} #{user.last_name}", user, id: "show-user-action" %></td>
         <td><%= mail_to user.email %></td>
-        <td><%= link_to "Edit", edit_user_path(user) %></td>
+        <td><%= link_to "Edit", edit_user_path(user), id:"edit-user-#{user.id}-action" %></td>
       </tr>
     <% end %>
   </tbody>
