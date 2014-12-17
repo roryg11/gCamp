@@ -1,6 +1,6 @@
 == README
 
-[![Build Status](https://travis-ci.org/roryg11/gCamp.svg)](https://travis-ci.org/roryg11/gCamp)
+{<img src="https://travis-ci.org/roryg11/gCamp.svg" alt="Build Status" />}[https://travis-ci.org/roryg11/gCamp]
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
