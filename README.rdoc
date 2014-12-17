@@ -1,5 +1,9 @@
 == README
 
+[![Build Status](https://travis-ci.org/roryg11/gCamp.svg)](https://travis-ci.org/roryg11/gCamp)
+
+Travis-CI link = https://travis-ci.org/profile/roryg11
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
