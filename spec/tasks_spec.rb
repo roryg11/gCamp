@@ -4,19 +4,19 @@ feature 'CRUDing tasks' do
   scenario 'user can see a listing of tasks on index page' do
     Task.create!(
       description: "take out trash",
-      due_date: "2014-12-17"
+      due_date: "#{Date.today + 6}"
     )
     Task.create!(
       description: "fold laundry",
-      due_date: "2014-12-20"
+      due_date: "#{Date.today + 8}"
     )
 
     visit tasks_path
 
     expect(page).to have_content("take out trash")
-    expect(page).to have_content("2014-12-17")
+    expect(page).to have_content("#{Date.today + 6}")
     expect(page).to have_content("fold laundry")
-    expect(page).to have_content("2014-12-17")
+    expect(page).to have_content("#{Date.today + 8}")
   end
 
 
@@ -25,11 +25,11 @@ feature 'CRUDing tasks' do
     visit tasks_path
     click_on "new-task-action"
     fill_in "Description", with:"take out trash"
-    fill_in "Due date", with: "2014-12-17"
+    fill_in "Due date", with: "#{Date.today + 8}"
     click_on 'Create Task'
 
     expect(page).to have_content("take out trash")
-    expect(page).to have_content("2014-12-17")
+    expect(page).to have_content("#{Date.today + 8}")
     expect(page).to have_content("Task was successfully created.")
   end
 
@@ -37,7 +37,7 @@ feature 'CRUDing tasks' do
 
     visit tasks_path
     click_on "new-task-action"
-    fill_in "Due date", with: "2014-12-17"
+    fill_in "Due date", with: "#{Date.today + 6}"
     click_on 'Create Task'
 
     expect(page).to have_content("Description can't be blank")
