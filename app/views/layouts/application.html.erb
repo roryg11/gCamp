@@ -13,6 +13,14 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="/">gCamp</a>
       </div>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li><%= link_to "Sign Out", signout_path %></li>
+        <% else %>
+          <li><%= link_to "Sign In", signin_path %></li>
+          <li><%= link_to "Sign Up", signup_path %></li>
+        <% end %>
+      </ul>
     </div>
   </nav>
 
