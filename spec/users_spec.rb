@@ -8,6 +8,8 @@ feature "CRUDing users" do
     fill_in "First name", with: 'Test'
     fill_in "Last name", with: 'Test last'
     fill_in "Email", with: 'Test@test.com'
+    fill_in "Password", with: 'test'
+    fill_in "Password confirmation", with: 'test'
     click_on 'submit-action'
 
     expect(page).to have_content('Test')
@@ -21,7 +23,9 @@ feature "CRUDing users" do
       first_name: "test",
       last_name: "Mctest",
       email: "test@mctest.com",
-    )
+      password: "test",
+      password_confirmation: "test"
+      )
 
     visit users_path
     click_on 'show-user-action'
@@ -37,12 +41,16 @@ feature "CRUDing users" do
       first_name: "test",
       last_name: "Mctest",
       email: "test@mctest.com",
+      password: "test",
+      password_confirmation: "test"
     )
 
     User.create!(
       first_name: "scrooge",
       last_name: "mcscrooge",
       email: "scrooge@scrooge.com",
+      password: "scrooge",
+      password_confirmation: "scrooge"
     )
 
     visit users_path
@@ -63,6 +71,8 @@ feature "CRUDing users" do
       first_name: "test",
       last_name: "mctest",
       email: "test@mctest.com",
+      password: "test",
+      password_confirmation: "test"
     )
 
     visit users_path
@@ -76,13 +86,17 @@ feature "CRUDing users" do
     User.create!(
       first_name: "test",
       last_name: "mctest",
-      email: "test@mctest.com"
+      email: "test@mctest.com",
+      password: "test",
+      password_confirmation: "test",
     )
 
     User.create!(
     first_name: "scrooge",
     last_name: "mcscrooge",
-    email: "scrooge@mcscrooge.com"
+    email: "scrooge@mcscrooge.com",
+    password: "scrooge",
+    password_confirmation: "scrooge",
     )
 
     visit users_path

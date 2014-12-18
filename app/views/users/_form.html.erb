@@ -48,7 +48,7 @@
     <div class="form-group">
       <div class="col-md-offset-2 col-md-3">
         <div class="well text-center">
-          <%= link_to "Delete", user_path(@user), method: :delete, data: {confirm: "Are you sure?"}, class:"btn btn-danger" %>
+          <%= link_to "Delete", user_path(@user), method: :delete, data: {confirm: "Are you sure?"}, id: "delete-user-#{@user.id}-action", class:"btn btn-danger" %>
         </div>
       </div>
     </div>
