@@ -1,6 +1,15 @@
 <div class="page-header">
-    <div class=>
-    <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger pull-right", id: "delete-project-#{@project.id}-action"%>
-    <%= link_to "Edit", edit_project_path, class: "btn btn-primary pull-right", id:"edit-project-#{@project.id}-action" %>
+    <ol class="breadcrumb">
+      <li><%= link_to "Projects", projects_path %></li>
+      <li class= "active"><%= @project.name %></li>
+    </ol>
+    <div class= "pull-right">
+      <%= link_to "Edit", edit_project_path, class: "btn btn-primary", id:"edit-project-#{@project.id}-action" %>
+      <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger", id: "delete-project-#{@project.id}-action"%>  
+    </div>
   <h1><%= @project.name %></h1>
+</div>
+
+<div class="container">
+  <%= link_to "#{@project.tasks.all.count} Tasks", project_tasks_path(@project) %>
 </div>
