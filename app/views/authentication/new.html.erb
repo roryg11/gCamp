@@ -1,31 +1,30 @@
-<h1>Sign In</h1>
+<div class= "well col-md-4 col-md-offset-4">
+  <h1>Sign In</h1>
 
-<%= form_tag signin_path do |f| %>
-  <% if @sign_in_error %>
-  <p>
-    <%= @sign_in_error %>
-  </p>
+  <%= form_tag signin_path do |f| %>
+    <% if @sign_in_error %>
+    <p>
+      <%= @sign_in_error %>
+    </p>
+    <% end %>
+
+    <div class="form-group">
+      <%= label_tag :email %>
+      <div>
+        <%= email_field_tag :email, nil, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :password %>
+      <div>
+        <%= password_field_tag :password, nil, class: "form-control" %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <%= submit_tag "Sign In", class: "btn btn-primary" %>
+    </div>
   <% end %>
-
-  <div>
-    <%= label_tag :email %>
-  </div>
-
-  <div>
-    <%= email_field_tag :email %>
-  </div>
-
-  <div>
-    <%= label_tag :password %>
-  </div>
-
-  <div>
-    <%= password_field_tag :password %>
-  </div>
-
-  <div>
-    <%= submit_tag "Sign In" %>
-  </div>
-
-
-<% end %>
+</div>
