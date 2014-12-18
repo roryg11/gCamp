@@ -54,3 +54,27 @@ feature 'Signing into Account ' do
     expect(page).to have_content("Username / password combination is invalid")
   end
 end
+
+feature 'Signing Out of an account' do
+  scenario 'User can successfull signout of their account' do
+
+    User.create!(
+    first_name: "Bill",
+    last_name: "Nye",
+    email: "thescienceguy@pbs.org",
+    password: "science",
+    password_confirmation: "science"
+    )
+
+    visit signin_path
+    fill_in "Email", with: "thescienceguy@pbs.org"
+    fill_in "Password", with: "science"
+    click_on "submit-signin-action"
+    click_on "signout-action"
+
+
+    expect(page).to have_content("Sign In")
+    expect(page).to have_content("Sign Up")
+    expect(page).to have_no_content("Sign Out")
+  end
+end
