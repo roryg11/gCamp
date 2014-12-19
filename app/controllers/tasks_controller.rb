@@ -12,7 +12,7 @@ class TasksController < ApplicationController
     @tasks = @project.tasks.all
 
     if params[:complete] == "false"
-      @tasks = @project.tasks.where(:complete => false)
+      @tasks = @tasks.where(:complete => false)
     end
 
     if params[:order_by_desc] == "true"

@@ -28,7 +28,7 @@
     </thead>
 
     <tbody >
-      <% @project.tasks.each do |task| %>
+      <% @tasks.each do |task| %>
         <% if (@today..(@today+7)).cover?(task.due_date) == true %>
           <tr bgcolor="EE9999">
             <td ><%= task.description %></td>
