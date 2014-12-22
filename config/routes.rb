@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :tasks
+    resources :memberships
   end
 
   get '/signup' => 'registrations#new', as: :signup

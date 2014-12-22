@@ -5,11 +5,15 @@
     </ol>
     <div class= "pull-right">
       <%= link_to "Edit", edit_project_path, class: "btn btn-primary", id:"edit-project-#{@project.id}-action" %>
-      <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger", id: "delete-project-#{@project.id}-action"%>  
+      <%= link_to "Delete", project_path(@project), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger", id: "delete-project-#{@project.id}-action"%>
     </div>
   <h1><%= @project.name %></h1>
 </div>
 
 <div class="container">
-  <%= link_to "#{@project.tasks.all.count} Tasks", project_tasks_path(@project) %>
+  <p><%= link_to "#{@project.tasks.all.count} Tasks", project_tasks_path(@project) %></p>
+</div>
+
+<div class="container">
+  <p><%= link_to "#{@project.memberships.all.count} Memberships", project_memberships_path(@project) %></p>
 </div>
