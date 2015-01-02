@@ -7,15 +7,22 @@
   <h1><%= @project.name %>: Manage Members</h1>
 </div>
 
+<% if alert %>
+  <div class="container alert alert-danger text-center">
+    <% alert.each do |message| %>
+      <p><%= message %></p>
+    <% end  %>
+  </div>
+<% end %>
+
 <div class="well">
   <%= form_for([@project, @membership], html: {class:"form-inline"}) do |f| %>
-
     <div class="form-group">
-      <%= f.collection_select :user_id, User.all, :id, :full_name, {include_blank: false}, class: "form-control" %>
+      <%= f.collection_select :user_id, User.all, :id, :full_name, {include_blank: "member"}, class: "form-control" %>
     </div>
 
     <div class="form-group">
-      <%= f.select :role, ["member", "owner"], {include_blank: false}, class: "form-control" %>
+      <%= f.select :role, ["member", "owner"], {include_blank: "role"}, class: "form-control" %>
     </div>
 
     <div class="form-group">
@@ -24,7 +31,24 @@
   <% end %>
 </div>
 
+  <% @memberships.each do |membership|%>
+    <%= form_for([@project, membership], html: {class:"form-inline"}) do |f| %>
+      <%= render 'shared/errors', object: membership %>
+      <div class="form-group col-md-2">
+        <%= link_to "#{membership.user.full_name}", user_path("#{membership.user_id}") %>
+      </div>
 
-<%= @memberships.each do |membership|%>
-  <%= debug membership %>
-<% end %>
+      <div class="form-group">
+        <%= f.select :role, ["member", "owner"], {include_blank: false}, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Update", class: "btn btn-primary"%>
+      </div>
+
+      <div class="form-group">
+        <%= link_to "", project_membership_path(@project, membership), method: :delete, data: {confirm: "Are you sure?"}, class: "glyphicon glyphicon-remove" %>
+      </div>
+    <% end  %>
+    <br>
+  <% end %>

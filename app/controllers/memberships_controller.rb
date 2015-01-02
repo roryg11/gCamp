@@ -14,9 +14,29 @@ class MembershipsController < ApplicationController
       redirect_to project_memberships_path(@project)
       flash[:notice] = "Member successfully saved."
     else
-      redirect_to project_memberships_path(@project)
-      flash[:notice] = "Member could not be saved."
+      redirect_to project_memberships_path(@project), alert: @membership.errors.full_messages
     end
+  end
+
+  def edit
+  end
+
+  def update
+    @membership = @project.memberships.find(params[:id])
+    @membership.update(membership_params)
+    if @membership.save
+      redirect_to project_memberships_path(@project)
+      flash[:notice] = "membership updated"
+    else
+      redirect_to project_memberships_path(@project)
+    end
+  end
+
+  def destroy
+    @membership = @project.memberships.find(params[:id])
+    @membership.destroy
+    redirect_to project_memberships_path(@project)
+    flash[:notice] = "membership successfully deleted"
   end
 
   private

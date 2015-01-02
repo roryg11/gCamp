@@ -1,4 +1,6 @@
 class Membership < ActiveRecord::Base
-  belongs_to :projects
-  belongs_to :users
+  validates :user_id, :role, presence: true
+
+  belongs_to :project
+  belongs_to :user
 end

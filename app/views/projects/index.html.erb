@@ -8,6 +8,7 @@
     <tr>
       <th>Name</th>
       <th>Tasks</th>
+      <th>Members</th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +16,7 @@
     <tr>
       <td><%= link_to "#{project.name}", project_path(project), id: "show-project-#{project.id}-action" %></td>
       <td><%= link_to "#{project.tasks.all.count} Tasks", project_tasks_path(project) %></td>
+      <td><%= link_to "#{project.memberships.all.count} Members", project_memberships_path(project) %> </td>
     </tr>
     <% end %>
   </tbody>
