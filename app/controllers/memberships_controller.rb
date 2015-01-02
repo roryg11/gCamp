@@ -11,8 +11,7 @@ class MembershipsController < ApplicationController
   def create
     @membership = @project.memberships.new(membership_params)
     if @membership.save
-      redirect_to project_memberships_path(@project)
-      flash[:notice] = "Member successfully saved."
+      redirect_to project_memberships_path(@project), notice: "Member successfully saved."
     else
       redirect_to project_memberships_path(@project), alert: @membership.errors.full_messages
     end
